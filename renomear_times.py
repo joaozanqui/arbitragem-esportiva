@@ -43,7 +43,7 @@ def brasileirao(times):
             times[i] = "Juventude"
         elif "Grêmio" in times[i] or "Gremio" in times[i]:
             times[i] = "Grêmio"
-        elif "Internacional" in times[i]:
+        elif "Inter" in times[i]:
             times[i] = "Internacional"
         elif "Palmeiras" in times[i]:
             times[i] = "Palmeiras"

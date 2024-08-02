@@ -27,20 +27,26 @@ urls = {
     'argentina1': 'https://sports.sportingbet.com/pt-br/sports/futebol-4/aposta/argentina-38/campeonato-argentino-102540'
 }
 
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
 def processar_campeonato(campeonato_nome):
 # campeonato_nome = 'brasileirao'
 
     if not campeonato_nome in urls:
         return casa_sem_campeonato()
 
-    driver = Driver(uc=True)
 
     try:
         url = urls[campeonato_nome]
     except KeyError:
         return "Erro: Campeonato não encontrado na base de dados da Betano."
 
-
+    driver = Driver(uc=True)
     driver.get(url)
     time.sleep(5)
     df = pd.DataFrame()
@@ -72,6 +78,9 @@ def processar_campeonato(campeonato_nome):
                 dia_split.pop(4)
             if not dia_split[4].replace('.', '', 1).isdigit():
                 dia_split = dia_split[4:]
+            if not is_number(dia_split[8]):
+                dia_split = dia_split[8:]
+                continue
             time1.append(dia_split[0])
             time2.append(dia_split[1])
             horario.append(re.findall(r'(\d+:\d\d)', dia_split[2]))

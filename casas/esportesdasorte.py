@@ -30,16 +30,16 @@ urls = {
 }
 
 def processar_campeonato(campeonato_nome):
+# campeonato_nome = 'brasileirao'
     if not campeonato_nome in urls:
         return casa_sem_campeonato()
-
-    driver_to_save = Driver(uc=True)
 
     try:
         url = urls[campeonato_nome]
     except KeyError:
         return "Erro: Campeonato não encontrado na base de dados do Esportes da Sorte."
 
+    driver_to_save = Driver(uc=True)
     driver_to_save.get(url)
     WebDriverWait(driver_to_save, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "body")))
     time.sleep(5)
@@ -63,11 +63,22 @@ def processar_campeonato(campeonato_nome):
             with_methods=True,
         )
 
-    dftime = df.loc[df.aa_classList.str.contains('minutes', regex=True, na=False)].aa_textContent.str.extract(r'(\d+:\d\d)', expand=False)
+    infos = df.loc[df.aa_classList.str.contains('match-content flex-container', regex=True, na=False)].aa_textContent
+    retirar = -1
+    for i, (jogo) in enumerate(infos):
+        if 'Aposte Agora' in jogo:
+            retirar = i
 
+    dftime = df.loc[df.aa_classList.str.contains('minutes', regex=True, na=False)].aa_textContent.str.extract(r'(\d+:\d\d)', expand=False)
     dfteams = df.loc[df.aa_classList.str.contains('team-content-info', regex=True, na=False)]
     time1 = dfteams['aa_innerText'][::2].reset_index(drop=True)
     time2 = dfteams['aa_innerText'][1::2].reset_index(drop=True)
+
+    if retirar > -1:
+        dftime.pop(dftime.index[retirar])
+        time1.pop(retirar)
+        time2.pop(retirar)
+
     dfteams = pd.DataFrame({'time1': time1, 'time2': time2})
 
     dfodds = df.loc[df.aa_classList.str.contains('bet-btn-odd', regex=True, na=False)]

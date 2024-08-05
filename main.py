@@ -20,7 +20,6 @@ valor_gasto = 100.00
 
 # Cria o dicionario para selecionar as melhores odds
 melhores_odds = {}
-
 def process_file(args):
     filename, campeonato_nome, pasta_casas = args
     try:

@@ -38,7 +38,7 @@ def is_number(s):
         return False
 
 def processar_campeonato(campeonato_nome):
-# campeonato_nome = 'brasileirao'
+# campeonato_nome = 'copadobrasil'
 
     try:
         url = urls[campeonato_nome]
@@ -71,6 +71,9 @@ def processar_campeonato(campeonato_nome):
         info_split = info.splitlines()
         if is_number(info_split[1]):
             continue
+        if "Partida" not in info_split[0].split(' (')[1] or "Partida" not in info_split[1].split(' (')[1]:
+            continue
+
         horarios.append(info_split[2])
         time1.append(info_split[0].split(' (')[0])
         time2.append(info_split[1].split(' (')[0])

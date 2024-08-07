@@ -146,7 +146,19 @@ def encontrar_indices(lista, valor):
     return [i for i, x in enumerate(lista) if x == valor]
 
 def comparar_odds():
-    for i, (casa, jogos) in enumerate(jogos_casas.items()):
+    #Colocando a casa que capturou o maior numero de jogos no inicio da lista
+    maior = 0
+    maior_casa = ""
+    for i, (casa) in enumerate(jogos_casas):
+        if len(casa) > len(maior_casa):
+            maior = i
+            maior_casa = casa
+
+    itens = list(jogos_casas.items())
+    itens[0], itens[maior] = itens[maior], itens[0]
+    jogos_casas_reordenados = dict(itens)
+
+    for i, (casa, jogos) in enumerate(jogos_casas_reordenados.items()):
         if(jogos.empty):
             print(casa, " - DataFrame Vazio")
             continue
@@ -168,29 +180,29 @@ def comparar_odds():
                     melhores_odds[coluna].extend(jogos[coluna])
         # Compara as odds das outras casas de aposta com as da primeira iteracao
         else:
-            for i, time1 in enumerate(jogos['time1']):
+            for j, time1 in enumerate(jogos['time1']):
                 # print(time1)
                 if time1 in melhores_odds['time1']:
                     indices_mo = encontrar_indices(melhores_odds['time1'], time1)
                     for i_mo in indices_mo:
-                        # print(jogos['time2'][i], melhores_odds['time2'][i_mo])
-                        if jogos['time2'][i] == melhores_odds['time2'][i_mo]:
-                            odd1_jogo = to_float(jogos['odd1'][i])
-                            oddX_jogo = to_float(jogos['oddX'][i])
-                            odd2_jogo = to_float(jogos['odd2'][i])
+                        # print(jogos['time2'][j], melhores_odds['time2'][i_mo])
+                        if jogos['time2'][j] == melhores_odds['time2'][i_mo]:
+                            odd1_jogo = to_float(jogos['odd1'][j])
+                            oddX_jogo = to_float(jogos['oddX'][j])
+                            odd2_jogo = to_float(jogos['odd2'][j])
                             odd1_mo = to_float(melhores_odds['odd1'][i_mo])
                             oddX_mo = to_float(melhores_odds['oddX'][i_mo])
                             odd2_mo = to_float(melhores_odds['odd2'][i_mo])
-                            # print(time1, jogos['time2'][i], odd1_mo, odd1_jogo, oddX_mo, oddX_jogo, odd2_mo, odd2_jogo)
+                            # print(time1, jogos['time2'][j], odd1_mo, odd1_jogo, oddX_mo, oddX_jogo, odd2_mo, odd2_jogo)
                             # comando = input("Pause: ").strip()
                             if odd1_jogo > odd1_mo:
-                                melhores_odds['odd1'][i_mo] = jogos['odd1'][i]
+                                melhores_odds['odd1'][i_mo] = jogos['odd1'][j]
                                 melhores_odds['casa1'][i_mo] = casa
                             if oddX_jogo > oddX_mo:
-                                melhores_odds['oddX'][i_mo] = jogos['oddX'][i]
+                                melhores_odds['oddX'][i_mo] = jogos['oddX'][j]
                                 melhores_odds['casaX'][i_mo] = casa
                             if odd2_jogo > odd2_mo:
-                                melhores_odds['odd2'][i_mo] = jogos['odd2'][i]
+                                melhores_odds['odd2'][i_mo] = jogos['odd2'][j]
                                 melhores_odds['casa2'][i_mo] = casa
                             break
 
@@ -207,6 +219,13 @@ def calcula_lucro(odd1_str, oddX_str, odd2_str, n):
     odd1 = to_float(odd1_str)
     oddX = to_float(oddX_str)
     odd2 = to_float(odd2_str)
+    #
+    # if odd1 == 0:
+    #     odd1 = 1
+    # if oddX == 0:
+    #     oddX = 1
+    # if odd2 == 0:
+    #     odd2 = 1
 
     valor_inicial = round(valor_gasto, 2)
     gasto_atual = round(valor_gasto, 2)

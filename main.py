@@ -9,7 +9,7 @@ from colorama import Fore, Back, Style, init
 # Diretório onde estão os scripts
 pasta_casas = 'casas'
 arquivos_ignorar = []
-# arquivos_ignorar = ['bet365.py', 'betano.py', 'betfair.py', 'esportesdasorte.py', 'galerabet.py', 'pmbet.py', 'portugabet.py', 'sportingbet.py', 'sportybet.py', 'apostaganha.py', 'betnacional.py', 'bwin.py', 'stake.py', 'kto.py', 'estrelabet.py', 'superbet.py', 'pinnacle.py', 'h2bet.py']
+# arquivos_ignorar = ['bet365.py', 'betano.py', 'betfair.py', 'esportesdasorte.py', 'galerabet.py', 'pmbet.py', 'portugabet.py', 'sportingbet.py', 'sportybet.py', 'apostaganha.py', 'betnacional.py', 'bwin.py', 'stake.py', 'betsson.py', 'estrelabet.py', 'superbet.py', 'pinnacle.py', 'h2bet.py']
 casas_de_aposta = [casa.replace('.py', '') for casa in os.listdir(pasta_casas) if casa.endswith('.py')]
 
 # Lista para armazenar as variáveis coletadas

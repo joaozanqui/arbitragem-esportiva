@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from a_selenium2df import get_df
 from PrettyColorPrinter import add_printer
-
+import time
 import sys
 import os
 
@@ -16,14 +16,25 @@ if __name__ == "__main__":
 
 from renomear_times import renomear
 
+urls = {
+    'brasileirao': 'https://br.betsat.com/prejogo/#leagues/2417-undefined',
+    'brasileiraob': 'https://br.betsat.com/prejogo/#league/2418-undefined',
+    'brasileiraoc': 'https://br.betsat.com/prejogo/#league/2850-undefined',
+    'inglaterra1': 'https://br.betsat.com/prejogo/#leagues/46-undefined',
+    'argentina1': 'https://br.betsat.com/prejogo/#leagues/596-undefined',
+    'libertadores': 'https://br.betsat.com/prejogo/#leagues/2572-undefined'
+}
 
 def processar_campeonato(campeonato_nome):
-    # campeonato_nome = 'brasileirao'
+# campeonato_nome = 'libertadores'
     driver = Driver(uc=True)
 
-    caminho_html = 'file://' + os.path.expanduser('~/Downloads/bet365 - Apostas Desportivas Online.html')
-    driver.get(caminho_html)
+    try:
+        url = urls[campeonato_nome]
+    except KeyError:
+        return "Erro: Campeonato não encontrado na base de dados da Betano."
 
+    driver.get(url)
     df = pd.DataFrame()
     while df.empty:
         df = get_df(
@@ -34,31 +45,31 @@ def processar_campeonato(campeonato_nome):
             queryselector="*",
             with_methods=True,
         )
-        
-    dftime = df.loc[df.aa_classList.str.contains('rcl-ParticipantFixtureDetails_BookCloses', regex=True, na=False)].aa_innerText
 
-    num_jogos = dftime.shape[0]
-
-    jogos = df.loc[df.aa_classList.str.contains('rcl-ParticipantFixtureDetails_TeamNames', regex=True, na=False)].aa_innerText
+    infos = df.loc[df.aa_classList.str.contains("odds_tr", na=False, regex=True)].aa_innerText
+    horarios = []
     time1 = []
     time2 = []
-    for jogo in jogos:
-        jogo_split = jogo.splitlines()
-        time1.append(jogo_split[0])
-        time2.append(jogo_split[1])
-        
+    odd1 = []
+    oddX = []
+    odd2 = []
+    for info in infos:
+        info_split = info.splitlines()
+        horarios.append(info_split[1])
+        time1.append(info_split[3].split('-')[0])
+        time2.append(info_split[3].split('-')[1])
+        odd1.append(info_split[6])
+        oddX.append(info_split[8])
+        odd2.append(info_split[10])
+
+    dftime = pd.DataFrame({
+            'horario': horarios
+        })
+
     dfteams = pd.DataFrame({
         'time1': time1,
         'time2': time2,
     })
-
-    odds = df.loc[df.aa_classList.str.contains('sgl-ParticipantOddsOnly80_Odds', regex=True, na=False)].aa_innerText
-    odd1 = odds.head(num_jogos).reset_index(drop=True)
-    odds = odds[num_jogos::]
-    oddX = odds.head(num_jogos).reset_index(drop=True)
-    odds = odds[num_jogos::]
-    odd2 = odds.head(num_jogos).reset_index(drop=True)
-
     dfodds = pd.DataFrame({
         'odd1': odd1,
         'oddX': oddX,

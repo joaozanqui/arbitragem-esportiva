@@ -26,7 +26,8 @@ urls = {
     'brasileiraob': 'https://sports.bwin.com/pt-br/sports/futebol-4/aposta/brasil-33/brasileiro-b-102361',
     'copadobrasil': 'https://sports.bwin.com/pt-br/sports/futebol-4/aposta/brasil-33/copa-do-brasil-102723',
     'inglaterra1': 'https://sports.bwin.com/pt-br/sports/futebol-4/aposta/inglaterra-14/premier-league-102841',
-    'argentina1': 'https://sports.bwin.com/pt-br/sports/futebol-4/aposta/argentina-38/campeonato-argentino-102540'
+    'argentina1': 'https://sports.bwin.com/pt-br/sports/futebol-4/aposta/argentina-38/campeonato-argentino-102540',
+    'libertadores': 'https://sports.bwin.com/pt-br/sports/futebol-4/aposta/am%C3%A9rica-do-sul-42/conmebol-libertadores-0:15'
 }
 
 def processar_campeonato(campeonato_nome):

@@ -27,7 +27,8 @@ urls = {
     'brasileiraod': 'https://www.apostaganha.bet/esportes/futebol/brasil/liga/16905',
     'copadobrasil': 'https://www.apostaganha.bet/esportes/futebol/brasil/liga/16491',
     'inglaterra1': 'https://www.apostaganha.bet/esportes/futebol/inglaterra/liga/16305',
-    'argentina1': 'https://www.apostaganha.bet/esportes/futebol/argentina/liga/20031'
+    'argentina1': 'https://www.apostaganha.bet/esportes/futebol/argentina/liga/20031',
+    'libertadores': 'https://apostaganha.bet/esportes/futebol/internacional-clubes/liga/16492'
 }
 
 def processar_campeonato(campeonato_nome):

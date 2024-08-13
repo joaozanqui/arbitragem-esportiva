@@ -26,7 +26,8 @@ urls = {
     'brasileiraoc': 'https://m.esportesdasorte.com/ptb/bet/sports/soccer/brazil/brasileiro-serie-c-2024',
     'copadobrasil': 'https://m.esportesdasorte.com/ptb/bet/sports/soccer/brazil/copa-do-brasil-2024',
     'inglaterra1': 'https://m.esportesdasorte.com/ptb/bet/sports/soccer/england',
-    'argentina1': 'https://m.esportesdasorte.com/ptb/bet/sports/soccer/argentina'
+    'argentina1': 'https://m.esportesdasorte.com/ptb/bet/sports/soccer/argentina',
+    'libertadores': 'https://m.esportesdasorte.com/ptb/bet/sports/soccer/international-clubs'
 }
 
 def processar_campeonato(campeonato_nome):

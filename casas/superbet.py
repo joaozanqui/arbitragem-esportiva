@@ -27,7 +27,8 @@ urls = {
     'brasileiraoc': 'https://superbet.com/pt-br/sport-bets/football/brazil/brazil-brasileiro-serie-c/all?ti=1696&cpi=1281&ct=m',
     'copadobrasil': 'https://superbet.com/pt-br/sport-bets/football/brazil/brazil-copa-do-brasil?ti=1690',
     # 'inglaterra1': 'https://superbet.com/pt-br/sport-bets/football/england/england-premier-league?ti=106',
-    'argentina1': 'https://superbet.com/pt-br/sport-bets/football/argentina/argentina-liga-profesional?ti=1740'
+    'argentina1': 'https://superbet.com/pt-br/sport-bets/football/argentina/argentina-liga-profesional?ti=1740',
+    'libertadores': 'https://superbet.com/pt-br/sport-bets/football/international-clubs/copa-libertadores-playoff/all'
 }
 
 def processar_campeonato(campeonato_nome):

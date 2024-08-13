@@ -6,7 +6,8 @@ def renomear(campeonato_nome, times1, times2):
         'brasileiraod': brasileiraod,
         'copadobrasil': copadobrasil,
         'inglaterra1': inglaterra1,
-        'argentina1': argentina1
+        'argentina1': argentina1,
+        'libertadores': libertadores
     }
     campeonatos.get(campeonato_nome)(times1)
     campeonatos.get(campeonato_nome)(times2)
@@ -338,87 +339,93 @@ def inglaterra1(times):
 def argentina1(times):
     for i in range(len(times)):
         if "Argentinos" in times[i]:
-            # times[i] = 1
             times[i] = "Argentinos Juniors"
         elif "Tucuman" in times[i] or "Tucumán" in times[i]:
-            # times[i] = 1
             times[i] = "Atlético Tucumán"
         elif "Banfield" in times[i]:
-            # times[i] = 1
             times[i] = "Banfield"
         elif "Barracas" in times[i]:
-            # times[i] = 1
             times[i] = "Barracas Central"
         elif "Belgrano" in times[i]:
-            # times[i] = 1
             times[i] = "Belgrano"
         elif "Boca" in times[i]:
-            # times[i] = 1
             times[i] = "Boca Juniors"
         elif "Central Cordoba" in times[i] or "Central Córdoba" in times[i]:
-            # times[i] = 1
             times[i] = "Central Córdoba"
         elif "Defensa" in times[i] or "Defesa" in times[i]:
-            # times[i] = 1
             times[i] = "Defensa y Justicia"
         elif "Riestra" in times[i]:
-            # times[i] = 1
             times[i] = "Deportivo Riestra"
         elif "Estudiantes" in times[i]:
-            # times[i] = 1
             times[i] = "Estudiantes de La Plata"
         elif "Gimnasia" in times[i] or "GLP" in times[i]:
-            # times[i] = 1
             times[i] = "Gimnasia La Plata"
         elif "Godoy" in times[i]:
-            # times[i] = 1
             times[i] = "Godoy Cruz"
         elif "Huracan" in times[i] or "Huracán" in times[i]:
-            # times[i] = 1
             times[i] = "Huracán"
         elif "Independiente" in times[i] and "Rivadavia" not in times[i]:
-            # times[i] = 1
             times[i] = "Independiente"
         elif "Independiente Rivadavia" in times[i] or "RIV" in times[i]:
-            # times[i] = 1
             times[i] = "Independiente Rivadavia"
         elif "Instituto" in times[i]:
-            # times[i] = 1
             times[i] = "Instituto Córdoba"
         elif "Lanus" in times[i] or "Lanús" in times[i]:
-            # times[i] = 1
             times[i] = "Lanús"
         elif "Newell" in times[i]:
-            # times[i] = 1
             times[i] = "Newell's Old Boys"
         elif "Platense" in times[i]:
-            # times[i] = 1
             times[i] = "Platense"
         elif "Racing" in times[i]:
-            # times[i] = 1
             times[i] = "Racing"
         elif "River" in times[i]:
-            # times[i] = 1
             times[i] = "River Plate"
         elif "Rosario" in times[i] or "Rosário" in times[i]:
-            # times[i] = 1
             times[i] = "Rosário Central"
         elif "San Lorenzo" in times[i]:
-            # times[i] = 1
             times[i] = "San Lorenzo"
         elif "Sarmiento" in times[i]:
-            # times[i] = 1
             times[i] = "Sarmiento"
         elif "Talleres" in times[i]:
-            # times[i] = 1
             times[i] = "Talleres"
         elif "Tigre" in times[i]:
-            # times[i] = 1
             times[i] = "Tigre"
         elif "Union" in times[i] or "Unión" in times[i]:
-            # times[i] = 1
             times[i] = "Unión Santa Fe"
         elif "Velez" in times[i] or "Vélez" in times[i]:
-            # times[i] = 1
             times[i] = "Vélez Sarsfield"
 
+def libertadores(times):
+    for i in range(len(times)):
+        if "tico-MG" in times[i] or "tico MG" in times[i] or "Mineiro" in times[i]:
+            times[i] = "Atlético Mineiro"
+        elif "Bolivar" in times[i]:
+            times[i] = "Bolivar"
+        elif "Botafogo" in times[i]:
+            times[i] = "Botafogo"
+        elif "Colo" in times[i]:
+            times[i] = "Colo Colo"
+        elif "Flamengo" in times[i]:
+            times[i] = "Flamengo"
+        elif "Fluminense" in times[i]:
+            times[i] = "Fluminense"
+        elif "Grêmio" in times[i] or "Gremio" in times[i]:
+            times[i] = "Grêmio"
+        elif "Junior" in times[i] or "Barranquilla" in times[i]:
+            times[i] = "Junior Barranquilla"
+        elif "Nacional" in times[i]:
+            times[i] = "Nacional"
+        elif "Palmeiras" in times[i]:
+            times[i] = "Palmeiras"
+        elif "River" in times[i]:
+            times[i] = "River Plate"
+        elif "San Lorenzo" in times[i]:
+            times[i] = "San Lorenzo"
+        elif "Paulo" in times[i]:
+            times[i] = "São Paulo"
+        elif "Penarol" in times[i] or "Peñarol" in times[i]:
+            times[i] = "Peñarol"
+        elif "Talleres" in times[i]:
+            times[i] = "Talleres"
+        elif "Strongest" in times[i]:
+            times[i] = "The Strongest"

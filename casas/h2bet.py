@@ -26,7 +26,8 @@ urls = {
     'brasileiraod': 'https://www.h2bet.com/esportes/match/Soccer/Brazil/12156/25120617',
     'copadobrasil': 'https://www.h2bet.com/esportes/match/Soccer/Brazil/1799/25170875',
     'inglaterra1': 'https://www.h2bet.com/esportes/match/Soccer/England/538/24949853',
-    'argentina1': 'https://www.h2bet.com/esportes/match/Soccer/Argentina/1685/25052168'
+    'argentina1': 'https://www.h2bet.com/esportes/match/Soccer/Argentina/1685/25052168',
+    'libertadores': 'https://www.h2.bet/esportes/match/Soccer/South%20America/2988/25229209'
 }
 
 def processar_campeonato(campeonato_nome):

@@ -25,7 +25,8 @@ urls = {
     'brasileiraod': 'https://www.segurobet.com/pre-jogo/match/Soccer/Brazil/12156',
     'copadobrasil': 'https://www.segurobet.com/pre-jogo/match/Soccer/Brazil/1799',
     'inglaterra1': 'https://www.segurobet.com/pre-jogo/match/Soccer/England/538',
-    'argentina1': 'https://www.segurobet.com/pre-jogo/match/Soccer/Argentina/1685'
+    'argentina1': 'https://www.segurobet.com/pre-jogo/match/Soccer/Argentina/1685',
+    'libertadores': 'https://www.segurobet.com/pre-jogo/match/Soccer/South%20America/2988'
 }
 
 def processar_campeonato(campeonato_nome):

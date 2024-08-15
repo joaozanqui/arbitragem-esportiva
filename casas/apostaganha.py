@@ -32,26 +32,17 @@ urls = {
 }
 
 def processar_campeonato(campeonato_nome):
-# campeonato_nome = 'brasileiraob'
-    driver_to_save = Driver(uc=True)
+    # campeonato_nome = 'brasileiraob'
+    # driver_to_save = Driver(uc=True)
 
     try:
-       url = urls[campeonato_nome]
+        url = urls[campeonato_nome]
     except KeyError:
         return "Erro: Campeonato não encontrado na base de dados do Esportes da Sorte."
 
-    driver_to_save.get(url)
-    WebDriverWait(driver_to_save, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "body")))
-    time.sleep(5)
-    page_source = driver_to_save.page_source
-    with open(pasta_casas + 'casas-html/apostaganha.html', 'w', encoding='utf-8') as file:
-        file.write(page_source)
-    driver_to_save.quit()
-
     driver = Driver(uc=True)
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    caminho_html = os.path.join(current_dir, 'casas-html/apostaganha.html')
-    driver.get(f"file://{caminho_html}")
+    driver.get(url)
+    time.sleep(10)
     df = pd.DataFrame()
     while df.empty:
         df = get_df(
@@ -62,6 +53,32 @@ def processar_campeonato(campeonato_nome):
             queryselector="*",
             with_methods=True,
         )
+
+    # driver_to_save.get(url)
+    # WebDriverWait(driver_to_save, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "body")))
+    # time.sleep(5)
+    # page_source = driver_to_save.page_source
+    # with open(pasta_casas + 'casas-html/apostaganha.html', 'w', encoding='utf-8') as file:
+    #     file.write(page_source)
+    # driver_to_save.quit()
+    #
+    # driver = Driver(uc=True)
+    # current_dir = os.path.dirname(os.path.abspath(__file__))
+    # caminho_html = os.path.join(current_dir, 'casas-html/apostaganha.html')
+    # driver.get(f"file://{caminho_html}")
+    # df = pd.DataFrame()
+    # while df.empty:
+    #     df = get_df(
+    #         driver,
+    #         By,
+    #         WebDriverWait,
+    #         expected_conditions,
+    #         queryselector="*",
+    #         with_methods=True,
+    #     )
+
+
+
     infos = df.loc[df.aa_classList.str.contains('game-league-content', regex=True, na=False)].aa_innerText[::9]
 
     horarios = []

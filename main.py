@@ -166,8 +166,7 @@ def comparar_odds():
         if i == 0:
             numero_de_itens = len(jogos['time1'])
             for coluna in melhores_odds.keys():
-                if coluna in ['casa1', 'casaX', 'casa2', 'valor1', 'valorX', 'valor2', 'valor_ganho', 'lucro',
-                              'valor_gasto']:
+                if coluna in ['casa1', 'casaX', 'casa2', 'valor1', 'valorX', 'valor2', 'valor_ganho', 'lucro', 'valor_gasto']:
                     add = 0
                     if (coluna in ['casa1', 'casaX', 'casa2']):
                         add = casa

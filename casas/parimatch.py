@@ -1,9 +1,12 @@
 from seleniumbase import Driver
 import pandas as pd
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from a_selenium2df import get_df
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
+
 from PrettyColorPrinter import add_printer
 import time
 import sys
@@ -19,6 +22,7 @@ else:
     pasta_casas = 'casas/'
 
 from renomear_times import renomear
+from login import conta
 
 urls = {
     'brasileirao': 'https://br.parimatch.com/pt/football/serie-a-0f7c91bcf24e4d62a76e7d9d3fee8177/prematch',
@@ -31,27 +35,22 @@ urls = {
     'libertadores': 'https://br.parimatch.com/pt/football/copa-libertadores-ddccbf1be9ef4c8195ae4645d793899f/prematch'
 }
 
+
+def has_only_numbers(text):
+    pattern = r'^(\d+(\.\d+)?\n)*\d+(\.\d+)?$'
+    return bool(re.match(pattern, str(text)))
+
 def processar_campeonato(campeonato_nome):
-#     campeonato_nome = 'brasileiraob'
-    driver_to_save = Driver(uc=True)
+# campeonato_nome = 'inglaterra1'
 
     try:
         url = urls[campeonato_nome]
     except KeyError:
         return "Erro: Campeonato não encontrado na base de dados da parimatch."
 
-    driver_to_save.get(url)
-    WebDriverWait(driver_to_save, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "body")))
-    time.sleep(12)
-    page_source = driver_to_save.page_source
-    with open(pasta_casas + 'casas-html/parimatch.html', 'w', encoding='utf-8') as file:
-        file.write(page_source)
-    driver_to_save.quit()
-
     driver = Driver(uc=True)
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    caminho_html = os.path.join(current_dir, 'casas-html/parimatch.html')
-    driver.get(f"file://{caminho_html}")
+    driver.get(url)
+    time.sleep(5)
     df = pd.DataFrame()
     while df.empty:
         df = get_df(
@@ -62,6 +61,38 @@ def processar_campeonato(campeonato_nome):
             queryselector="*",
             with_methods=True,
         )
+
+    if(campeonato_nome == 'libertadores'):
+        df.loc[df.aa_classList.str.contains('modulor_list-cell__element__1_49_0', regex=True, na=False) & df.aa_textContent.str.contains('ibertadores', regex=True, na=False)].iloc[0].se_click()
+        time.sleep(5)
+        df = pd.DataFrame()
+        while df.empty:
+            df = get_df(
+                driver,
+                By,
+                WebDriverWait,
+                expected_conditions,
+                queryselector="*",
+                with_methods=True,
+            )
+
+    # botao_login = df.loc[df.aa_classList.str.contains("modulor_button__button__1_49_0 modulor_button__always_white__1_49_0 modulor_button__low__1_49_0", na=False, regex=True)]
+    # botao_login.iloc[0].se_click()
+    # time.sleep(5)
+    # df = pd.DataFrame()
+    # while df.empty:
+    #     df = get_df(
+    #         driver,
+    #         By,
+    #         WebDriverWait,
+    #         expected_conditions,
+    #         queryselector="*",
+    #         with_methods=True,
+    #     )
+
+    # login = df.loc[df.aa_classList.str.contains("modulor_field__field-input__1_49_0 modulor_field__with-label__1_49_0 modulor_field__active__1_49_0", na=False, regex=True)]
+    # senha = df.loc[df.aa_classList.str.contains("modulor_field__field-input__1_49_0 modulor_field__with-label__1_49_0 modulor_field__with-content__1_49_0", na=False, regex=True)]
+
 
     dftime = df.loc[df.aa_classList.str.contains('styles_time-status__Y2C9z', regex=True, na=False)].aa_textContent.str.extract(r'(\d+:\d\d)', expand=False)
 
@@ -75,11 +106,6 @@ def processar_campeonato(campeonato_nome):
         time2.append(time_split[1])
 
     dfteams = pd.DataFrame({'time1': time1, 'time2': time2})
-
-    def has_only_numbers(text):
-        # Expressão regular para encontrar números no formato especificado
-        pattern = r'^(\d+(\.\d+)?\n)*\d+(\.\d+)?$'
-        return bool(re.match(pattern, str(text)))
 
     dfodds = df.loc[df.aa_outerHTML.str.contains('data-id="modulor-typography"', regex=True, na=False)]
     dfodds = dfodds[dfodds['aa_innerText'].apply(has_only_numbers) & (dfodds['aa_offsetHeight'] == 34)].aa_innerText
@@ -108,6 +134,12 @@ def processar_campeonato(campeonato_nome):
         'oddX': oddX,
         'odd2': odd2
     })
+
+    for line in dfodds:
+        for i, (odd) in enumerate(dfodds[line]):
+            nova_odd = float(odd)*0.98397
+            dfodds[line][i] = round(nova_odd, 2)
+
 
     dftime = dftime.reset_index(drop=True)
     dfteams = dfteams.reset_index(drop=True)

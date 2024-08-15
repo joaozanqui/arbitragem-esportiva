@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from a_selenium2df import get_df
 from PrettyColorPrinter import add_printer
-
+import time
 import sys
 import os
 
@@ -37,6 +37,7 @@ def processar_campeonato(campeonato_nome):
         return "Erro: Campeonato não encontrado na base de dados da Betano."
 
     driver.get(url)
+    time.sleep(5)
     df = pd.DataFrame()
     while df.empty:
         df = get_df(
@@ -71,13 +72,13 @@ def processar_campeonato(campeonato_nome):
         if not data_split[4].isdigit():
             data_split.pop(4)
 
-        time = data_split[1]
+        horario = data_split[1]
         team1 = data_split[2]
         team2 = data_split[3]
         odd1 = data_split[5]
         oddX = data_split[7]
         odd2 = data_split[9]
-        (informacoes.append([time, team1, team2, odd1, oddX, odd2]))
+        (informacoes.append([horario, team1, team2, odd1, oddX, odd2]))
 
     campeonato = pd.DataFrame(informacoes, columns=['horario', 'time1', 'time2', 'odd1', 'oddX', 'odd2'])
     renomear(campeonato_nome, campeonato.time1, campeonato.time2)

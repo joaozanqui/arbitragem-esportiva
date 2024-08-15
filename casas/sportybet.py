@@ -38,7 +38,7 @@ def processar_campeonato(campeonato_nome):
         return "Erro: Campeonato não encontrado na base de dados da SportyBet."
 
     driver.get(url)
-    time.sleep(5)
+    time.sleep(10)
     df = pd.DataFrame()
     while df.empty:
         df = get_df(

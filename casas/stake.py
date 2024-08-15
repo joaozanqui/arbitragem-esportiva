@@ -50,6 +50,7 @@ def processar_campeonato(campeonato_nome):
 
     driver = Driver(uc=True)
     driver.get(url)
+    time.sleep(5)
     df = pd.DataFrame()
     while df.empty:
         df = get_df(

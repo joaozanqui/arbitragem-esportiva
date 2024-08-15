@@ -32,25 +32,16 @@ urls = {
 
 def processar_campeonato(campeonato_nome):
 # campeonato_nome = 'brasileirao'
-    driver_to_save = Driver(uc=True)
 
     try:
         url = urls[campeonato_nome]
     except KeyError:
         return "Erro: Campeonato não encontrado na base de dados do playpix."
 
-    driver_to_save.get(url)
-    WebDriverWait(driver_to_save, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "body")))
-    time.sleep(5)
-    page_source = driver_to_save.page_source
-    with open(pasta_casas + 'casas-html/playpix.html', 'w', encoding='utf-8') as file:
-        file.write(page_source)
-    driver_to_save.quit()
 
     driver = Driver(uc=True)
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    caminho_html = os.path.join(current_dir, 'casas-html/playpix.html')
-    driver.get(f"file://{caminho_html}")
+    driver.get(url)
+    time.sleep(10)
     df = pd.DataFrame()
     while df.empty:
         df = get_df(
@@ -61,6 +52,30 @@ def processar_campeonato(campeonato_nome):
             queryselector="*",
             with_methods=True,
         )
+
+    # driver_to_save = Driver(uc=True)
+    # driver_to_save.get(url)
+    # WebDriverWait(driver_to_save, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "body")))
+    # time.sleep(5)
+    # page_source = driver_to_save.page_source
+    # with open(pasta_casas + 'casas-html/playpix.html', 'w', encoding='utf-8') as file:
+    #     file.write(page_source)
+    # driver_to_save.quit()
+    #
+    # driver = Driver(uc=True)
+    # current_dir = os.path.dirname(os.path.abspath(__file__))
+    # caminho_html = os.path.join(current_dir, 'casas-html/playpix.html')
+    # driver.get(f"file://{caminho_html}")
+    # df = pd.DataFrame()
+    # while df.empty:
+    #     df = get_df(
+    #         driver,
+    #         By,
+    #         WebDriverWait,
+    #         expected_conditions,
+    #         queryselector="*",
+    #         with_methods=True,
+    #     )
     #
 
     dfgames = df.loc[df.aa_classList.str.contains('multi-column-content  multi-column-show-type-undefined', regex=True, na=False)].aa_innerText

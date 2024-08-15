@@ -24,6 +24,7 @@ urls = {
     'brasileiraoc': 'https://sports.sportingbet.com/pt-br/sports/futebol-4/aposta/brasil-33/brasileiro-c-102155',
     'copadobrasil': 'https://sports.sportingbet.com/pt-br/sports/futebol-4/aposta/brasil-33/copa-do-brasil-102723',
     'inglaterra1': 'https://sports.sportingbet.com/pt-br/sports/futebol-4/aposta/inglaterra-14/premier-league-102841',
+    'espanha1': 'https://sports.sportingbet.com/pt-br/sports/futebol-4/aposta/espanha-28/laliga-102829',
     'argentina1': 'https://sports.sportingbet.com/pt-br/sports/futebol-4/aposta/argentina-38/campeonato-argentino-102540',
     'libertadores': 'https://sports.sportingbet.com/pt-br/sports/futebol-4/aposta/am%C3%A9rica-do-sul-42/conmebol-libertadores-0:15'
 }

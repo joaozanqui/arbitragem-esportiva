@@ -26,7 +26,8 @@ urls = {
     'brasileiraob': 'https://superbet.com/pt-br/sport-bets/football/brazil/brazil-brasileiro-serie-b?ti=1697',
     'brasileiraoc': 'https://superbet.com/pt-br/sport-bets/football/brazil/brazil-brasileiro-serie-c/all?ti=1696&cpi=1281&ct=m',
     'copadobrasil': 'https://superbet.com/pt-br/sport-bets/football/brazil/brazil-copa-do-brasil?ti=1690',
-    # 'inglaterra1': 'https://superbet.com/pt-br/sport-bets/football/england/england-premier-league?ti=106',
+    'inglaterra1': 'https://superbet.com/pt-br/sport-bets/football/england/england-premier-league?ti=106',
+    'espanha1': 'https://superbet.com/pt-br/sport-bets/football/spain/spain-laliga/all?ti=98',
     'argentina1': 'https://superbet.com/pt-br/sport-bets/football/argentina/argentina-liga-profesional?ti=1740',
     'libertadores': 'https://superbet.com/pt-br/sport-bets/football/international-clubs/copa-libertadores-playoff/all'
 }
@@ -88,18 +89,17 @@ def processar_campeonato(campeonato_nome):
     odd1 = []
     oddX = []
     odd2 = []
+
+
     for info in infos:
         info_split = info.splitlines()
         if re.search(r'(\d+:\d\d)', info):
             horarios.append(re.search(r'(\d+:\d\d)', info).group(0))
         time1.append(info_split[2])
         time2.append(info_split[3])
-        odd_split = info_split[6].split(' ')
-        odd1.append(odd_split[0])
-        odd_split = info_split[8].split(' ')
-        oddX.append(odd_split[0])
-        odd_split = info_split[10].split(' ')
-        odd2.append(odd_split[0])
+        odd1.append(info_split[6])
+        oddX.append(info_split[10])
+        odd2.append(info_split[14])
 
     dftime = pd.DataFrame({
         'horario': horarios

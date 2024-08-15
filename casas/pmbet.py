@@ -21,8 +21,9 @@ urls = {
     'brasileiraob': 'https://pmbet.co.tz/en/sports/prematch/Football/Brazil/Serie%20B/',
     'brasileiraoc': 'https://pmbet.co.tz/en/sports/prematch/Football/Brazil/Serie%20C/',
     'brasileiraod': 'https://pmbet.co.tz/en/sports/prematch/Football/Brazil/Campeonato%20Brasileiro%20Serie%20D',
-    'copadobrasil': 'https://pmbet.co.tz/en/sports/prematch/Football/Brazil/Copa%20do%20Brasil/Botafogo%20RJ%20V%20EC%20Bahia_11069434',
+    'copadobrasil': 'https://pmbet.co.tz/en/sports/prematch/Football/Brazil/Copa%20do%20Brasil',
     'inglaterra1': 'https://pmbet.co.tz/en/sports/prematch/Football/England/Premier%20League',
+    'espanha1': 'https://pmbet.co.tz/en/sports/prematch/Football/Spain/La%20Liga',
     'argentina1': 'https://pmbet.co.tz/en/sports/prematch/Football/Argentina/Liga%20Profesional/',
     'libertadores': 'https://pmbet.co.tz/en/sports/prematch/Football/South%20America/Copa%20Libertadores/'
 }

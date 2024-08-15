@@ -21,6 +21,8 @@ urls = {
     'brasileirao': 'https://www.portugabet.com/home/events-area/s/CLE?group_type=LEAGUE&identifier=sr:tournament:325&name=Brasileir%C3%A3o%20S%C3%A9rie%20A',
     'brasileiraob': 'https://www.portugabet.com/home/events-area/s/CLE?group_type=LEAGUE&identifier=sr:tournament:390&name=Brasileir%C3%A3o%20S%C3%A9rie%20B',
     'brasileiraoc': 'https://www.portugabet.com/home/events-area/s/SC?country=Brasil&championship=Brasileir%C3%A3o%20S%C3%A9rie%20C&championshipId=sr:tournament:1281',
+    'inglaterra1': 'https://www.portugabet.com/home/events-area/s/CLE?group_type=LEAGUE&identifier=sr:tournament:17&name=Premier%20League',
+    'espanha1': 'https://www.portugabet.com/home/events-area/s/CLE?group_type=LEAGUE&identifier=sr:tournament:8&name=La%20Liga',
     'argentina1': 'https://www.portugabet.com/home/events-area/s/SC?country=Argentina&championship=Liga%20Profissional&championshipId=sr:tournament:155',
     'libertadores': 'https://www.portugabet.com/home/events-area/s/CLE?group_type=LEAGUE&identifier=sr:tournament:384&name=Copa%20Libertadores'
 }

@@ -15,7 +15,7 @@ casas_de_aposta = [casa.replace('.py', '') for casa in os.listdir(pasta_casas) i
 # Lista para armazenar as variáveis coletadas
 jogos_casas = {}
 arquivos_com_erro = []
-campeonatos_disponiveis = ['brasileirao', 'brasileiraob', 'brasileiraoc', 'brasileiraod', 'copadobrasil', 'inglaterra1', 'argentina1', 'libertadores']
+campeonatos_disponiveis = ['brasileirao', 'brasileiraob', 'brasileiraoc', 'brasileiraod', 'copadobrasil', 'inglaterra1', 'espanha1', 'argentina1', 'libertadores']
 valor_gasto = 100.00
 
 # Cria o dicionario para selecionar as melhores odds

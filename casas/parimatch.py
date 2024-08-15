@@ -31,6 +31,7 @@ urls = {
     'brasileiraod': 'https://br.parimatch.com/pt/football/serie-d-8ccb46c09f4844fc9b1b2440ef9ab501/prematch',
     'copadobrasil': 'https://br.parimatch.com/pt/football/cup-58ca48f32a8d4ae1addaf40de59f724b/prematch',
     'inglaterra1': 'https://br.parimatch.com/pt/football/premier-league-7f5506e872d14928adf0613efa509494/prematch',
+    'espanha1': 'https://br.parimatch.com/pt/football/laliga-d84ce93378454b0fa61d58b2696a950b/prematch',
     'argentina1': 'https://br.parimatch.com/pt/football/primera-division-1bcb9cbd374a481faa39bd89c66bdcab/prematch',
     'libertadores': 'https://br.parimatch.com/pt/football/copa-libertadores-ddccbf1be9ef4c8195ae4645d793899f/prematch'
 }

@@ -28,6 +28,7 @@ urls = {
     'brasileiraoc': 'https://stake.com/pt/sports/soccer/brazil/brasileiro-serie-c',
     'copadobrasil': 'https://stake.com/pt/sports/soccer/brazil/copa-do-brasil',
     'inglaterra1': 'https://stake.com/pt/sports/soccer/england/premier-league',
+    'espanha1': 'https://stake.com/pt/sports/soccer/spain/la-liga',
     'argentina1': 'https://stake.com/pt/sports/soccer/argentina/superliga',
     'libertadores': 'https://stake.com/pt/sports/soccer/international-clubs/copa-libertadores'
 }

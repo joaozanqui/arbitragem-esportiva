@@ -27,45 +27,22 @@ urls = {
     'brasileiraod': 'https://apostaganha.bet/esportes/futebol/brasil/liga/16905',
     'copadobrasil': 'https://apostaganha.bet/esportes/futebol/brasil/liga/16491',
     'inglaterra1': 'https://apostaganha.bet/esportes/futebol/inglaterra/liga/16305',
+    'espanha1': 'https://apostaganha.bet/esportes/futebol/espanha/liga/16302',
     'argentina1': 'https://apostaganha.bet/esportes/futebol/argentina/liga/20031',
     'libertadores': 'https://apostaganha.bet/esportes/futebol/internacional-clubes/liga/16492'
 }
 
 def processar_campeonato(campeonato_nome):
     # campeonato_nome = 'brasileiraob'
-    # driver_to_save = Driver(uc=True)
 
     try:
         url = urls[campeonato_nome]
     except KeyError:
         return "Erro: Campeonato não encontrado na base de dados do Esportes da Sorte."
 
-    driver = Driver(uc=True)
-    driver.get(url)
-    time.sleep(10)
-    df = pd.DataFrame()
-    while df.empty:
-        df = get_df(
-            driver,
-            By,
-            WebDriverWait,
-            expected_conditions,
-            queryselector="*",
-            with_methods=True,
-        )
-
-    # driver_to_save.get(url)
-    # WebDriverWait(driver_to_save, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "body")))
-    # time.sleep(5)
-    # page_source = driver_to_save.page_source
-    # with open(pasta_casas + 'casas-html/apostaganha.html', 'w', encoding='utf-8') as file:
-    #     file.write(page_source)
-    # driver_to_save.quit()
-    #
     # driver = Driver(uc=True)
-    # current_dir = os.path.dirname(os.path.abspath(__file__))
-    # caminho_html = os.path.join(current_dir, 'casas-html/apostaganha.html')
-    # driver.get(f"file://{caminho_html}")
+    # driver.get(url)
+    # time.sleep(10)
     # df = pd.DataFrame()
     # while df.empty:
     #     df = get_df(
@@ -76,6 +53,30 @@ def processar_campeonato(campeonato_nome):
     #         queryselector="*",
     #         with_methods=True,
     #     )
+
+    driver_to_save = Driver(uc=True)
+    driver_to_save.get(url)
+    WebDriverWait(driver_to_save, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "body")))
+    time.sleep(5)
+    page_source = driver_to_save.page_source
+    with open(pasta_casas + 'casas-html/apostaganha.html', 'w', encoding='utf-8') as file:
+        file.write(page_source)
+    driver_to_save.quit()
+
+    driver = Driver(uc=True)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    caminho_html = os.path.join(current_dir, 'casas-html/apostaganha.html')
+    driver.get(f"file://{caminho_html}")
+    df = pd.DataFrame()
+    while df.empty:
+        df = get_df(
+            driver,
+            By,
+            WebDriverWait,
+            expected_conditions,
+            queryselector="*",
+            with_methods=True,
+        )
 
 
 

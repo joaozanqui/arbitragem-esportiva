@@ -6,6 +6,7 @@ def renomear(campeonato_nome, times1, times2):
         'brasileiraod': brasileiraod,
         'copadobrasil': copadobrasil,
         'inglaterra1': inglaterra1,
+        'espanha1': espanha1,
         'argentina1': argentina1,
         'libertadores': libertadores
     }
@@ -429,3 +430,46 @@ def libertadores(times):
             times[i] = "Talleres"
         elif "Strongest" in times[i]:
             times[i] = "The Strongest"
+
+def espanha1(times):
+    for i in range(len(times)):
+        if "Alav" in times[i]:
+            times[i] = "Alavés"
+        if "Bilbao" in times[i]:
+            times[i] = "Athletic Bilbao"
+        if "tico Madrid" in times[i]:
+            times[i] = "Atlético Madrid"
+        if "Barcelona" in times[i]:
+            times[i] = "Barcelona"
+        if "Bétis" in times[i] or "Betis" in times[i]:
+            times[i] = "Bétis"
+        if "Celta" in times[i]:
+            times[i] = "Celta de Vigo"
+        if "Espanyol" in times[i]:
+            times[i] = "Espanyol"
+        if "Getafe" in times[i]:
+            times[i] = "Getafe"
+        if "Girona" in times[i]:
+            times[i] = "Girona"
+        if "Palmas" in times[i]:
+            times[i] = "Las Palmas"
+        if "Legan" in times[i]:
+            times[i] = "Leganés"
+        if "Mallorca" in times[i]:
+            times[i] = "Mallorca"
+        if "Osasuna" in times[i]:
+            times[i] = "Osasuna"
+        if "Rayo" in times[i] or "Vallecano" in times[i]:
+            times[i] = "Rayo Vallecano"
+        if "Real Madrid" in times[i]:
+            times[i] = "Real Madrid"
+        if "Sociedad" in times[i]:
+            times[i] = "Real Sociedad"
+        if "Sevilla" in times[i]:
+            times[i] = "Sevilla"
+        if "Valência" in times[i] or "Valencia" in times[i]:
+            times[i] = "Valência"
+        if "Valladolid" in times[i] or "Valhadolid" in times[i]:
+            times[i] = "Valladolid"
+        if "Villarreal" in times[i]:
+            times[i] = "Villarreal"

@@ -27,6 +27,7 @@ urls = {
     'brasileiraoc': 'https://www.galera.bet/sportsbook/sports/soccer/competitions/12913',
     'brasileiraod': 'https://www.galera.bet/sportsbook/sports/soccer/competitions/13036',
     'inglaterra1': 'https://www.galera.bet/sportsbook/sports/soccer/competitions/10104',
+    'espanha1': 'https://www.galera.bet/sportsbook/sports/soccer/competitions/10094',
     'argentina1': 'https://www.galera.bet/sportsbook/sports/soccer/competitions/10051',
     'libertadores': 'https://www.galera.bet/sportsbook/sports/soccer/competitions/10243'
 }

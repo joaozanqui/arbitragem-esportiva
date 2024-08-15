@@ -23,6 +23,7 @@ urls = {
     'brasileiraod': 'https://br.betano.com/sport/futebol/competicoes/brasil/10004/?sl=182510',
     'copadobrasil': 'https://br.betano.com/sport/futebol/competicoes/brasil/10004/?sl=10008',
     'inglaterra1': 'https://br.betano.com/sport/futebol/competicoes/inglaterra/1/',
+    'espanha1': 'https://br.betano.com/sport/futebol/espanha/laliga/5/',
     'argentina1': 'https://br.betano.com/sport/futebol/competicoes/argentina/11319/',
     'libertadores': 'https://br.betano.com/sport/futebol/competicoes/copa-libertadores/189817/'
 }

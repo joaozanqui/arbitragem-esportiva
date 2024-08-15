@@ -25,6 +25,7 @@ urls = {
     'brasileiraod': 'https://www.sportybet.com/br/sport/football/sr:category:13/sr:tournament:15335',
     'copadobrasil': 'https://www.sportybet.com/br/sport/football/sr:category:13/sr:tournament:373',
     'inglaterra1': 'https://www.sportybet.com/br/sport/football/sr:category:1/sr:tournament:17',
+    'espanha1': 'https://www.sportybet.com/br/sport/football/sr:category:32/sr:tournament:8',
     'argentina1': 'https://www.sportybet.com/br/sport/football/sr:category:48/sr:tournament:155',
     'libertadores': 'https://www.sportybet.com/br/sport/football/sr:category:top/sr:tournament:384'
 }

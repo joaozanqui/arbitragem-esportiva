@@ -23,6 +23,7 @@ urls = {
     'brasileiraod': 'https://betnacional.com/events/1/0/15335',
     'copadobrasil': 'https://betnacional.com/events/1/0/373',
     'inglaterra1': 'https://betnacional.com/events/1/0/17',
+    'espanha1': 'https://betnacional.com/events/1/0/8',
     'argentina1': 'https://betnacional.com/events/1/0/155',
     'libertadores': 'https://betnacional.com/events/1/0/384'
 }

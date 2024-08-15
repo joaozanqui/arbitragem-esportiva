@@ -30,6 +30,7 @@ urls = {
     'brasileiraod': 'https://www.betfair.com/apostas/br/futebol/brasil-s%C3%A9rie-d/c-7980087',
     'copadobrasil': 'https://www.betfair.com/apostas/br/futebol/copa-do-brasil/c-89219',
     'inglaterra1': 'https://www.betfair.com/apostas/br/futebol/inglaterra-premier-league/c-10932509',
+    'espanha1': 'https://www.betfair.com/apostas/br/futebol/espanha-la-liga/c-117',
     'argentina1': 'https://www.betfair.com/apostas/br/futebol/primeira-divis%C3%A3o-da-argentina/c-67387',
     'libertadores': 'https://www.betfair.com/apostas/br/futebol/libertadores/c-12147796'
 }

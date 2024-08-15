@@ -28,6 +28,7 @@ urls = {
     'brasileiraod': 'https://sportsbet.io/pt/sports/soccer/brazil/brasileiro-serie-d/matches',
     'copadobrasil': 'https://sportsbet.io/pt/sports/soccer/brazil/copa-do-brasil/matches',
     'inglaterra1': 'https://sportsbet.io/pt/sports/soccer/england/premier-league/matches',
+    'espanha1': 'https://sportsbet.io/pt/sports/soccer/spain/la-liga/matches',
     'argentina1': 'https://sportsbet.io/pt/sports/soccer/argentina/superliga/matches',
     'libertadores': 'https://sportsbet.io/pt/sports/soccer/international-clubs/copa-libertadores/matches'
 }

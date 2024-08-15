@@ -20,6 +20,7 @@ urls = {
     'brasileirao': 'https://www.bet365.com/#/AC/B1/C1/D1002/E88369731/G40/',
     'brasileiraob': 'https://www.bet365.com/#/AC/B1/C1/D1002/E102584281/G40/',
     'inglaterra1': 'https://www.bet365.com/#/AC/B1/C1/D1002/E91422157/F0/G40/',
+    'espanha1': 'https://www.bet365.com/#/AC/B1/C1/D1002/E105912932/G40/H^1/',
     'argentina1': 'https://www.bet365.com/#/AC/B1/C1/D1002/E98752003/G40/',
     'libertadores': 'https://www.bet365.com/#/AC/B1/C1/D1002/E101830157/G40/'
 }

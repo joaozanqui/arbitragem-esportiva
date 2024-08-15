@@ -26,6 +26,7 @@ urls = {
     'brasileiraod': 'https://www.playpix.com/pb/sports/pre-match/event-view/Soccer/Brazil/12156/brasileir%C3%A3o-s%C3%A9rie-d',
     'copadobrasil': 'https://www.playpix.com/pb/sports/pre-match/event-view/Soccer/Brazil/1799/copa-do-brasil',
     'inglaterra1': 'https://www.playpix.com/pb/sports/pre-match/event-view/Soccer/England/538/premier-league',
+    'espanha1': 'https://www.playpix.com/pb/sports/pre-match/event-view/Soccer/Spain/545/la-liga',
     'argentina1': 'https://www.playpix.com/pb/sports/pre-match/event-view/Soccer/Argentina/1685/liga-profesional',
     'libertadores': 'https://www.playpix.com/pb/sports/pre-match/event-view/Soccer/South%20America/2988/copa-libertadores'
 }

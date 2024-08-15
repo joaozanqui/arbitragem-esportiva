@@ -21,6 +21,7 @@ urls = {
     'brasileiraob': 'https://br.betsat.com/prejogo/#league/2418-undefined',
     'brasileiraoc': 'https://br.betsat.com/prejogo/#league/2850-undefined',
     'inglaterra1': 'https://br.betsat.com/prejogo/#leagues/46-undefined',
+    'espanha1': 'https://br.betsat.com/prejogo/#league/117-undefined',
     'argentina1': 'https://br.betsat.com/prejogo/#leagues/596-undefined',
     'libertadores': 'https://br.betsat.com/prejogo/#leagues/2572-undefined'
 }

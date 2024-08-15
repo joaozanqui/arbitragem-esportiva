@@ -26,6 +26,7 @@ urls = {
     'brasileiraob': 'https://www.betsson.com/br/apostas-esportivas/futebol/brasil/brasil-serie-b?tab=liveAndUpcoming',
     'copadobrasil': 'https://www.betsson.com/br/apostas-esportivas/futebol/brasil/copa-do-brasil?tab=liveAndUpcoming',
     'inglaterra1': 'https://www.betsson.com/br/apostas-esportivas/futebol/inglaterra/inglaterra-premier-league-epl?tab=liveAndUpcoming',
+    'espanha1': 'https://www.betsson.com/br/apostas-esportivas/futebol/espanha/espanha-la-liga?tab=liveAndUpcoming',
     'argentina1': 'https://www.betsson.com/br/apostas-esportivas/futebol/argentina/argentina-liga-profesional?tab=liveAndUpcoming',
     'libertadores': 'https://www.betsson.com/br/apostas-esportivas/futebol/copa-libertadores/copa-libertadores?tab=liveAndUpcoming'
 }

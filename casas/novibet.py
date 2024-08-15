@@ -25,6 +25,7 @@ urls = {
     'brasileirao': 'https://br.novibet.com/apostas-esportivas/brazil-football/4795946/competitions?ids=4930337',
     'brasileiraob': 'https://br.novibet.com/apostas-esportivas/brazil-football/4795946/brazil/serie-b/4930439',
     'inglaterra1': 'https://br.novibet.com/apostas-esportivas/top-league/5855201/competitions?ids=5865266',
+    'espanha1': 'https://br.novibet.com/apostas-esportivas/top-league/5855201/spain/laliga/5855115',
     'argentina1': 'https://br.novibet.com/apostas-esportivas/futebol/4372606/argentina/liga-profesional/4380918',
     'libertadores': 'https://br.novibet.com/apostas-esportivas/futebol-internacional/5484280/competitions?ids=5484305'
 }

@@ -27,6 +27,7 @@ urls = {
     'brasileiraod': 'https://www.pinnacle.com/pt/soccer/brazil-serie-d/matchups/#all',
     'copadobrasil': 'https://www.pinnacle.com/pt/soccer/brazil-cup/matchups/#all',
     'inglaterra1': 'https://www.pinnacle.com/pt/soccer/england-premier-league/matchups/#all',
+    'espanha1': 'https://www.pinnacle.com/pt/soccer/spain-la-liga/matchups/#all',
     'argentina1': 'https://www.pinnacle.com/pt/soccer/argentina-liga-pro/matchups/#all',
     'libertadores': 'https://www.pinnacle.com/pt/soccer/conmebol-copa-libertadores/matchups/#all'
 }

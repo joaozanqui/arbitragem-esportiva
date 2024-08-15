@@ -77,24 +77,6 @@ def processar_campeonato(campeonato_nome):
                 with_methods=True,
             )
 
-    # botao_login = df.loc[df.aa_classList.str.contains("modulor_button__button__1_49_0 modulor_button__always_white__1_49_0 modulor_button__low__1_49_0", na=False, regex=True)]
-    # botao_login.iloc[0].se_click()
-    # time.sleep(5)
-    # df = pd.DataFrame()
-    # while df.empty:
-    #     df = get_df(
-    #         driver,
-    #         By,
-    #         WebDriverWait,
-    #         expected_conditions,
-    #         queryselector="*",
-    #         with_methods=True,
-    #     )
-
-    # login = df.loc[df.aa_classList.str.contains("modulor_field__field-input__1_49_0 modulor_field__with-label__1_49_0 modulor_field__active__1_49_0", na=False, regex=True)]
-    # senha = df.loc[df.aa_classList.str.contains("modulor_field__field-input__1_49_0 modulor_field__with-label__1_49_0 modulor_field__with-content__1_49_0", na=False, regex=True)]
-
-
     dftime = df.loc[df.aa_classList.str.contains('styles_time-status__Y2C9z', regex=True, na=False)].aa_textContent.str.extract(r'(\d+:\d\d)', expand=False)
 
     dfteams = df.loc[df.aa_classList.str.contains('styles_competitors__UgcxV', regex=True, na=False)]

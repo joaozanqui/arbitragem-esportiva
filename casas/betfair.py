@@ -46,7 +46,6 @@ def to_float_or_zero(value):
 
 def processar_campeonato(campeonato_nome):
 # campeonato_nome = 'brasileirao'
-# url = urls[campeonato_nome]
 
     try:
         url = urls[campeonato_nome]

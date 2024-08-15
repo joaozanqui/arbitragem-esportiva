@@ -435,41 +435,41 @@ def espanha1(times):
     for i in range(len(times)):
         if "Alav" in times[i]:
             times[i] = "Alavés"
-        if "Bilbao" in times[i]:
+        elif "Bilbao" in times[i]:
             times[i] = "Athletic Bilbao"
-        if "tico Madrid" in times[i]:
-            times[i] = "Atlético Madrid"
-        if "Barcelona" in times[i]:
+        elif "tico Madrid" in times[i] or "tico de Madrid" in times[i]:
+            times[i] = "Atlético de Madrid"
+        elif "Barcelona" in times[i]:
             times[i] = "Barcelona"
-        if "Bétis" in times[i] or "Betis" in times[i]:
-            times[i] = "Bétis"
-        if "Celta" in times[i]:
+        elif "Celta" in times[i]:
             times[i] = "Celta de Vigo"
-        if "Espanyol" in times[i]:
+        elif "Espanyol" in times[i] or "Espanhol" in times[i]:
             times[i] = "Espanyol"
-        if "Getafe" in times[i]:
+        elif "Getafe" in times[i]:
             times[i] = "Getafe"
-        if "Girona" in times[i]:
+        elif "Girona" in times[i]:
             times[i] = "Girona"
-        if "Palmas" in times[i]:
+        elif "Palmas" in times[i]:
             times[i] = "Las Palmas"
-        if "Legan" in times[i]:
+        elif "Legan" in times[i]:
             times[i] = "Leganés"
-        if "Mallorca" in times[i]:
-            times[i] = "Mallorca"
-        if "Osasuna" in times[i]:
+        elif "Osasuna" in times[i]:
             times[i] = "Osasuna"
-        if "Rayo" in times[i] or "Vallecano" in times[i]:
+        elif "Rayo" in times[i] or "Vallecano" in times[i]:
             times[i] = "Rayo Vallecano"
-        if "Real Madrid" in times[i]:
+        elif "Bétis" in times[i] or "Betis" in times[i]:
+            times[i] = "Real Bétis"
+        elif "Real Madrid" in times[i]:
             times[i] = "Real Madrid"
-        if "Sociedad" in times[i]:
+        elif "Mallorca" in times[i] or "Maiorca" in times[i]:
+            times[i] = "Real Mallorca"
+        elif "Sociedad" in times[i]:
             times[i] = "Real Sociedad"
-        if "Sevilla" in times[i]:
+        elif "Valladolid" in times[i] or "Valhadolid" in times[i]:
+            times[i] = "Real Valladolid"
+        elif "Sevilla" in times[i] or "Sevilha" in times[i]:
             times[i] = "Sevilla"
-        if "Valência" in times[i] or "Valencia" in times[i]:
+        elif "Valência" in times[i] or "Valencia" in times[i]:
             times[i] = "Valência"
-        if "Valladolid" in times[i] or "Valhadolid" in times[i]:
-            times[i] = "Valladolid"
-        if "Villarreal" in times[i]:
+        elif "Villarreal" in times[i]:
             times[i] = "Villarreal"

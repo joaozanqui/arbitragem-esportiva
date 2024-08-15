@@ -13,6 +13,9 @@ add_printer(True)
 
 if __name__ == "__main__":
     sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    pasta_casas = ''
+else:
+    pasta_casas = 'casas/'
 
 from renomear_times import renomear
 
@@ -30,13 +33,14 @@ urls = {
 
 def processar_campeonato(campeonato_nome):
 # campeonato_nome = 'brasileirao'
-    driver = Driver(uc=True)
 
     try:
         url = urls[campeonato_nome]
     except KeyError:
         return "Erro: Campeonato não encontrado na base de dados da Betnacional."
 
+    # Raspagem online
+    driver = Driver(uc=True)
     driver.get(url)
     df = pd.DataFrame()
     while df.empty:
@@ -48,6 +52,31 @@ def processar_campeonato(campeonato_nome):
             queryselector="*",
             with_methods=True,
         )
+
+    # #Raspagem offline
+    # driver_to_save = Driver(uc=True)
+    # driver_to_save.get(url)
+    # WebDriverWait(driver_to_save, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "body")))
+    # time.sleep(5)
+    # page_source = driver_to_save.page_source
+    # with open(pasta_casas + 'casas-html/betnacional.html', 'w', encoding='utf-8') as file:
+    #     file.write(page_source)
+    # driver_to_save.quit()
+    #
+    # driver = Driver(uc=True)
+    # current_dir = os.path.dirname(os.path.abspath(__file__))
+    # caminho_html = os.path.join(current_dir, 'casas-html/betnacional.html')
+    # driver.get(f"file://{caminho_html}")
+    # df = pd.DataFrame()
+    # while df.empty:
+    #     df = get_df(
+    #         driver,
+    #         By,
+    #         WebDriverWait,
+    #         expected_conditions,
+    #         queryselector="*",
+    #         with_methods=True,
+    #     )
 
     dfinfos = df.loc[df.aa_outerHTML.str.contains('data-testid="preMatchOdds"', regex=True, na=False) & df['aa_innerText'].str.contains(r'^\d{2}:\d{2}', regex=True)].aa_innerText
 

@@ -33,16 +33,36 @@ urls = {
 def is_number(item):
     return bool(re.fullmatch(r'^[0-9:]+$', item))
 
+def is_float(item):
+    return bool(re.fullmatch(r'^-?\d+(\.\d+)?$', item))
+
 def processar_campeonato(campeonato_nome):
     # campeonato_nome = 'libertadores'
+
     if not campeonato_nome in urls:
         return casa_sem_campeonato()
 
     try:
         url = urls[campeonato_nome]
     except KeyError:
-        return "Erro: Campeonato não encontrado na base de dados do Esportes da Sorte."
+        return "Erro: Campeonato não encontrado na base de dados da Novibet."
 
+    #Raspagem online
+    # driver = Driver(uc=True)
+    # driver.get(url)
+    # time.sleep(10)
+    # df = pd.DataFrame()
+    # while df.empty:
+    #     df = get_df(
+    #         driver,
+    #         By,
+    #         WebDriverWait,
+    #         expected_conditions,
+    #         queryselector="*",
+    #         with_methods=True,
+    #     )
+
+    #Raspagem Offline
     driver_to_save = Driver(uc=True)
     driver_to_save.get(url)
     WebDriverWait(driver_to_save, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "body")))
@@ -80,6 +100,10 @@ def processar_campeonato(campeonato_nome):
             info_split.pop(2)
         if not is_number(info_split[3]):
             info_split.pop(3)
+
+        if not is_float(info_split[4]) or not is_float(info_split[6]) or not is_float(info_split[8]):
+            continue
+
         time1.append(info_split[0])
         time2.append(info_split[1])
         if is_number(info_split[2]):
@@ -91,8 +115,8 @@ def processar_campeonato(campeonato_nome):
         odd2.append(info_split[8])
 
     dftime = pd.DataFrame({
-            'horario': horarios
-        })
+        'horario': horarios
+    })
 
     dfteams = pd.DataFrame({
         'time1': time1,

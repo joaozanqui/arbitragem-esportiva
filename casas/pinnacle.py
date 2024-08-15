@@ -45,12 +45,37 @@ def processar_campeonato(campeonato_nome):
     try:
         url = urls[campeonato_nome]
     except KeyError:
-        return "Erro: Campeonato não encontrado na base de dados do Esportes da Sorte."
+        return "Erro: Campeonato não encontrado na base de dados da Pinnacle."
 
+    # #Raspagem online
+    # driver = Driver(uc=True)
+    # driver.get(url)
+    # time.sleep(5)
+    # df = pd.DataFrame()
+    # while df.empty:
+    #     df = get_df(
+    #         driver,
+    #         By,
+    #         WebDriverWait,
+    #         expected_conditions,
+    #         queryselector="*",
+    #         with_methods=True,
+    #     )
+
+    #Raspagem offline
+    driver_to_save = Driver(uc=True)
+    driver_to_save.get(url)
+    WebDriverWait(driver_to_save, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "body")))
+    time.sleep(5)
+    page_source = driver_to_save.page_source
+    with open(pasta_casas + 'casas-html/pinnacle.html', 'w', encoding='utf-8') as file:
+        file.write(page_source)
+    driver_to_save.quit()
 
     driver = Driver(uc=True)
-    driver.get(url)
-    time.sleep(5)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    caminho_html = os.path.join(current_dir, 'casas-html/pinnacle.html')
+    driver.get(f"file://{caminho_html}")
     df = pd.DataFrame()
     while df.empty:
         df = get_df(
@@ -61,6 +86,7 @@ def processar_campeonato(campeonato_nome):
             queryselector="*",
             with_methods=True,
         )
+
     infos = df.loc[df.aa_classList.str.contains('row-bbd1776fd58233709296 row-d92d06fbd3b09cc856bc', regex=True, na=False)].aa_innerText
 
     horarios = []

@@ -39,8 +39,11 @@ def ajustar_horario(horario_str, horas_subtrair=3):
     novo_horario_str = novo_horario.strftime('%H:%M')
     return novo_horario_str
 
+def is_text(text):
+    return bool(re.search(r'[a-zA-Z]', text))
+
 def processar_campeonato(campeonato_nome):
-# campeonato_nome = 'brasileiraob'
+# campeonato_nome = 'espanha1'
     if not campeonato_nome in urls:
         return casa_sem_campeonato()
 
@@ -48,10 +51,37 @@ def processar_campeonato(campeonato_nome):
         url = urls[campeonato_nome]
     except KeyError:
         return "Erro: Campeonato não encontrado na base de dados do Esportes da Sorte."
+# url = urls[campeonato_nome]
+
+    # #Raspagem online
+    # driver = Driver(uc=True)
+    # driver.get(url)
+    # time.sleep(5)
+    # df = pd.DataFrame()
+    # while df.empty:
+    #     df = get_df(
+    #         driver,
+    #         By,
+    #         WebDriverWait,
+    #         expected_conditions,
+    #         queryselector="*",
+    #         with_methods=True,
+    #     )
+
+    #Raspagem offline
+    driver_to_save = Driver(uc=True)
+    driver_to_save.get(url)
+    WebDriverWait(driver_to_save, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "body")))
+    time.sleep(5)
+    page_source = driver_to_save.page_source
+    with open(pasta_casas + 'casas-html/stake.html', 'w', encoding='utf-8') as file:
+        file.write(page_source)
+    driver_to_save.quit()
 
     driver = Driver(uc=True)
-    driver.get(url)
-    time.sleep(5)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    caminho_html = os.path.join(current_dir, 'casas-html/stake.html')
+    driver.get(f"file://{caminho_html}")
     df = pd.DataFrame()
     while df.empty:
         df = get_df(
@@ -77,6 +107,8 @@ def processar_campeonato(campeonato_nome):
         if not re.search(r'\d', info_split[6]):
             captcha = True
             break
+        if is_text(info_split[0]):
+            continue
         if not re.search(r'\d', info_split[0]):
             continue
         horarios.append(info_split[0])
@@ -95,6 +127,8 @@ def processar_campeonato(campeonato_nome):
         odd2 = []
         for info in infos:
             info_split = info.splitlines()
+            if is_text(info_split[0]):
+                continue
             if not re.search(r'\d', info_split[0]):
                 continue
             horarios.append(ajustar_horario(info_split[0]))

@@ -13,6 +13,9 @@ add_printer(True)
 
 if __name__ == "__main__":
     sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    pasta_casas = ''
+else:
+    pasta_casas = 'casas/'
 
 from renomear_times import renomear
 
@@ -30,13 +33,14 @@ urls = {
 
 def processar_campeonato(campeonato_nome):
 # campeonato_nome = 'brasileirao'
-    driver = Driver(uc=True)
 
     try:
         url = urls[campeonato_nome]
     except KeyError:
         return "Erro: Campeonato não encontrado na base de dados da Betano."
 
+    # Raspagem online
+    driver = Driver(uc=True)
     driver.get(url)
     time.sleep(5)
     df = pd.DataFrame()
@@ -49,6 +53,31 @@ def processar_campeonato(campeonato_nome):
             queryselector="*",
             with_methods=True,
         )
+
+    #Raspagem offline
+    # driver_to_save = Driver(uc=True)
+    # driver_to_save.get(url)
+    # WebDriverWait(driver_to_save, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "body")))
+    # time.sleep(5)
+    # page_source = driver_to_save.page_source
+    # with open(pasta_casas + 'casas-html/betano.html', 'w', encoding='utf-8') as file:
+    #     file.write(page_source)
+    # driver_to_save.quit()
+    #
+    # driver = Driver(uc=True)
+    # current_dir = os.path.dirname(os.path.abspath(__file__))
+    # caminho_html = os.path.join(current_dir, 'casas-html/betano.html')
+    # driver.get(f"file://{caminho_html}")
+    # df = pd.DataFrame()
+    # while df.empty:
+    #     df = get_df(
+    #         driver,
+    #         By,
+    #         WebDriverWait,
+    #         expected_conditions,
+    #         queryselector="*",
+    #         with_methods=True,
+    #     )
 
     cookies = df.loc[df.aa_classList.str.contains("uk-button sticky-notification__cta sticky-notification__cta--secondary", na=False, regex=True)]
     popup1 = df.loc[df.aa_classList.str.contains("tw-cursor-pointer tw-uppercase tw-p-n tw-text-white-snow tw-font-bold tw-leading-xs tw-text-xs", na=False, regex=True)]
